@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/some-coder-whowantstocode/byapar.git/static/css/main.478f1388.css",
+    "main.js": "/some-coder-whowantstocode/byapar.git/static/js/main.9d9af265.js",
+    "index.html": "/some-coder-whowantstocode/byapar.git/index.html",
+    "main.478f1388.css.map": "/some-coder-whowantstocode/byapar.git/static/css/main.478f1388.css.map",
+    "main.9d9af265.js.map": "/some-coder-whowantstocode/byapar.git/static/js/main.9d9af265.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.478f1388.css",
+    "static/js/main.9d9af265.js"
+  ]
+}
