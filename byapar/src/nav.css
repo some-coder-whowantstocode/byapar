@@ -1,0 +1,18 @@
+.navbar{
+    padding: 10px;
+}
+.navbar>ul{
+    display:flex;
+    /* border: 2px solid black; */
+}
+.navbar>ul>li{
+    list-style: none;
+    margin: 8px 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    padding-bottom: 10px;
+}
+.navbar>ul>li:hover{
+    /* color: gray; */
+    border-bottom: 2px solid rgb(255, 123, 0);
+}
