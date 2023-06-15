@@ -1,0 +1,7 @@
+.show{
+    border: 2px solid black;
+}
+.profile{
+    display: flex;
+    flex-direction: column;
+}

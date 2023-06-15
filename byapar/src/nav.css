@@ -1,11 +1,20 @@
 .navbar{
-    padding: 10px;
+    /* padding: 10px; */
+    display: flex;
+    width: 100vw;
+    justify-content: space-between;
+    padding-top: 6px;
+    background-color: white;
+    position:sticky;
+    z-index: 10;
+    top: 0;
+    box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.75);
 }
-.navbar>ul{
+.navbar>.leftnav>ul{
     display:flex;
     /* border: 2px solid black; */
 }
-.navbar>ul>li{
+.navbar>.leftnav>ul>li{
     list-style: none;
     margin: 8px 8px;
     cursor: pointer;
@@ -15,4 +24,44 @@
 .navbar>ul>li:hover{
     /* color: gray; */
     border-bottom: 2px solid rgb(255, 123, 0);
+}
+.rightnav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+.navlogin{
+    padding: 3px;
+    cursor: pointer;
+}
+.navsignup{
+    border: 2px solid black;
+    background-color: rgb(0, 157, 255);
+    color: white;
+    padding: 4px;
+    cursor: pointer;
+}
+.navsignup:hover{
+    border-radius: 4px;
+    background-color: white;
+    color:  rgb(0, 157, 255);
+}
+.navlogout{
+    border: 2px solid black;
+    background-color: red;
+    color: white;
+    padding: 4px;
+    margin-left: 3px;
+    cursor: pointer;
+}
+.navlogout:hover{
+    background-color: white;
+    color: red;
+}
+.porfopt{
+    height: 400px;
+    width: 100px;
+    background-color: purple;
+    
 }

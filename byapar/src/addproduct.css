@@ -1,0 +1,76 @@
+.adb {
+  
+    display: flex;
+    align-items: center;
+  
+    justify-content: center;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    /* align-items: center; */
+    background-color: white;
+    margin-left: 30px;
+}
+.addbox{
+    height: 60vh;
+    width: 80vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.addp {
+    width: 80px;
+    height: 30px;
+    font-size: 1.1rem;
+    color: white;
+    background-color: black;
+    margin: 5px;
+}
+
+.errbox {
+    border: 2px solid black;
+    min-width: 100px;
+    min-height: 50px;
+}
+
+.dividebox {
+    display: flex;
+
+}
+.leftbox{
+    width: 200px;
+
+}
+.rightbox{
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.rightbox>div>input{
+    width: 500px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid gray;
+}
+.rightbox>div>textarea{
+    width: 500px;
+    border-radius: 5px;
+    border: 2px solid gray;
+}
+.rightbox>div>p{
+    font-size: 1rem;
+    font-weight: 700;
+}
+.pimage{
+    height: 200px;
+    width: 200px;
+    border: 2px dashed black;
+    border-radius: 10px;
+}
