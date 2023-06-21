@@ -4,6 +4,7 @@ import Nav from './Nav'
 import axios from 'axios'
 import { supe } from './Authenticated'
 import { Navigate } from 'react-router-dom'
+import Header from './Header'
 
 const Cart = () => {
 
@@ -34,15 +35,11 @@ const Cart = () => {
     const [token,settoken]=useState(localStorage.getItem('Byapartoken'))
 
     
-        const headers ={
-            'Content-Type':'application/json',
-            'authorization': `${token}`
-        }
-
+    
 useEffect(()=>{
     if(token){
         const getdata =async()=>{
-            const data = await axios.get(url,{headers:headers})
+            const data = await axios.get(url,{headers:Header})
             console.log(data)
             setcartitem(data.data)
         }
@@ -54,12 +51,16 @@ useEffect(()=>{
 
 
 const removefromcart =async(id)=>{
+  const a = await supe()
+      if(a == false){
+        setlogin(false)
+      }
     const data ={
         _id:id
     }
     try{
         setload('visible')
-        const d =await axios.post('https://backend-9jms.onrender.com/byapar/api/v1/removefromcart/',data,{headers:headers})
+        const d =await axios.post('https://backend-9jms.onrender.com/byapar/api/v1/removefromcart/',data,{headers:Header})
         console.log(d)
         setload('invisible')
         render==false ? setrender(true) : setrender(false)

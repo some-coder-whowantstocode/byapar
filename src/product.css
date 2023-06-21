@@ -4,24 +4,6 @@
 .imaglabel{
     cursor: pointer;
 }
-.product{
-    /* background-color: black; */
-    /* border: 2px solid black; */
-    display:flex;
-    width: 100vw;
-    justify-content: space-between;
-    align-items: center;
-}
-.bigleftproduct{
+.pbox{
     display: flex;
-}
-.productimage{
-    border: 2px solid black;
-    height: 150px;
-    width: 150px;
-}
-.middleproduct{
-    font-size: 2rem;
-    cursor: pointer;
-   
 }

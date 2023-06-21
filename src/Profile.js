@@ -5,14 +5,22 @@ import { NavLink } from 'react-router-dom'
 import './profile.css'
 
 const Profile = () => {
+  
+  const logout =()=>{
+    // setisloggedin(false)
+    localStorage.removeItem('Byapartoken')
+  }
+
   return (
     <>
-    <Nav/>
+    {/* <Nav/> */}
     <div className='profile'>
-      <NavLink to='/addproduct' className={`navlink`}>Add product for sell</NavLink>
+      <NavLink to='/addproduct' className={`navlink whitebottom`}>Add product</NavLink>
       {/* <dir>hi</dir> */}
-      <NavLink to='/personallist' className={'navlink'}>Currently added by user.</NavLink>
-      <NavLink to='/cart' className={'navlink'}>Cart</NavLink>
+      <NavLink to='/personallist' className={'navlink whitebottom'}>Currently added</NavLink>
+      
+      <NavLink to={'/'} className='navlogout navlink' onClick={logout}>Log out</NavLink>
+
     </div>
     </>
 

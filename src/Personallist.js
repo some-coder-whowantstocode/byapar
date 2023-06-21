@@ -4,6 +4,7 @@ import jwtDecode from 'jwt-decode'
 import Nav from './Nav'
 import { supe } from './Authenticated'
 import { Navigate } from 'react-router-dom'
+import Header from './Header'
 
 const Personallist = () => {
 
@@ -33,10 +34,7 @@ const Personallist = () => {
 
     const url = `https://backend-9jms.onrender.com/byapar/api/v1/getbycreater`
 
-    const headers ={
-        'Content-Type':'application/json',
-        'authorization': `${token}`
-      }
+   
 
 
     useEffect(()=>{
@@ -44,7 +42,7 @@ const Personallist = () => {
         try{
           if(token){
               const get =async()=>{
-                  const data =await axios.get(url,{headers:headers})
+                  const data =await axios.get(url,{headers:Header})
                   console.log(data)
                   setproducts(data.data)
               }
@@ -63,13 +61,17 @@ const Personallist = () => {
 
 
     const remove =async(id)=>{
+      const a = await supe()
+      if(a == false){
+        setlogin(false)
+      }
       try{
         const data ={
           id:id
         }
         console.log(data)
         setload('visible')
-        const d= await axios.post(`https://backend-9jms.onrender.com/byapar/api/v1/deleteproduct/`,data,{headers:headers})
+        const d= await axios.post(`https://backend-9jms.onrender.com/byapar/api/v1/deleteproduct/`,data,{headers:Header})
         console.log(d)
         settoken(localStorage.getItem('Byapartoken'))
         setload('invisible')

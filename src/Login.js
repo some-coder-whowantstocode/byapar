@@ -42,7 +42,12 @@ const Login = () => {
        }catch(error){
         setLoad('invisible')
         console.log(error)
-        err.current.innerText = error.response.data.msg
+        if(err.response){
+          err.current.innerText = error.response.data.msg
+
+        }else{
+          err.current.innerText = error.message
+        }
        }
      
     }

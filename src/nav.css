@@ -1,14 +1,20 @@
 .navbar{
     /* padding: 10px; */
     display: flex;
-    width: 100vw;
+    min-width: 100%;
+    width: fit-content;
+    align-items: center;
     justify-content: space-between;
     padding-top: 6px;
-    background-color: white;
+    background-color: black;
+    color: white;
     position:sticky;
     z-index: 10;
     top: 0;
     box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.75);
+    min-height: 50px;
+    
+
 }
 .navbar>.leftnav>ul{
     display:flex;
@@ -17,7 +23,7 @@
 .navbar>.leftnav>ul>li{
     list-style: none;
     margin: 8px 8px;
-    cursor: pointer;
+    color: white;
     font-size: 1rem;
     padding-bottom: 10px;
 }
@@ -33,35 +39,68 @@
 }
 .navlogin{
     padding: 3px;
-    cursor: pointer;
+    
 }
 .navsignup{
     border: 2px solid black;
     background-color: rgb(0, 157, 255);
     color: white;
     padding: 4px;
-    cursor: pointer;
+    
 }
 .navsignup:hover{
     border-radius: 4px;
     background-color: white;
     color:  rgb(0, 157, 255);
 }
-.navlogout{
-    border: 2px solid black;
-    background-color: red;
-    color: white;
-    padding: 4px;
-    margin-left: 3px;
-    cursor: pointer;
-}
-.navlogout:hover{
-    background-color: white;
-    color: red;
-}
+
 .porfopt{
     height: 400px;
     width: 100px;
     background-color: purple;
     
+}
+.cartnav{
+    margin: 0 10px;
+}
+.navbar a{
+    
+    color: white;
+}
+.navbar a:hover{
+    color: greenyellow;
+}
+.usernav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.prof{
+    cursor: pointer;
+    position: relative;
+    width: 100px;
+}
+.navprof{
+    right: 21px;
+    top: 30px;
+    position: absolute;
+    width: 100px;
+    
+}
+.navprod{
+    position: relative;
+}
+.navprod:hover>.navprodopt{
+    display: block;
+}
+.navprodopt{
+    display: none;
+    position: absolute;
+    left: -4px;
+    top: 30px;
+    background-color: black;
+    padding: 10px;
+}
+.navprodopt>li{
+    border-bottom: 1px solid white;
 }

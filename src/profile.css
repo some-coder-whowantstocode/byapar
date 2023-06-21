@@ -4,4 +4,24 @@
 .profile{
     display: flex;
     flex-direction: column;
+    width: fit-content;
+    background-color: black;
+    padding: 10px;
+}
+.whitebottom{
+    border-bottom:1px solid white ;
+    margin-bottom: 7px;
+}
+.navlogout{
+    /* border: 2px solid black; */
+    background-color: red;
+    color: white;
+    padding: 4px;
+    margin-left: 3px;
+    cursor: pointer;
+    width: 100px;
+}
+.navlogout:hover{
+    background-color: white;
+    color: red;
 }

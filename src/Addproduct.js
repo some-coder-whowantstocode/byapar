@@ -5,9 +5,9 @@ import './addproduct.css'
 import defaul from './default.png'
 import { supe } from './Authenticated'
 import { Navigate } from 'react-router-dom'
+import Resize from './Resize'
 
 const Addproduct = () => {
-
 
 
   const [login,setlogin]=useState(true)
@@ -28,33 +28,45 @@ const Addproduct = () => {
     const description = useRef()
     const price = useRef()
     const [ig,setig]= useState(defaul)
+    const [resize,setresize]=useState(defaul)
     const [load,setload]=useState('invisible')
-    const err = useRef() 
-  
-  
+    const err = useRef()
+    const [typ,settype]=useState('MEN')
+    
+
     const changebase =(e)=>{
       if(e.target.files[0]){
         const filereader = new FileReader();
         filereader.readAsDataURL(e.target.files[0])
-        filereader.onload =()=>{
-          setig(filereader.result)
+        filereader.onload =(event)=>{
+          const base64String = event.target.result
+          setig(base64String)
+        
+    
         }
       }
     }
-  
+
+
     const additem =async(e)=>{
+      const a = await supe()
+      if(a == false){
+        setlogin(false)
+      }
       err.current.innerText =''
       const n = await name.current.value
       const d = await description.current.value
       const p = await price.current.value
-  
-      if(ig || n != '' || d != '' || p!=''){
+      const t = typ
+      console.log(typ)
+      if(ig || n !== '' || d !== '' || p!=='' || t!==''){
        
         const data ={
           name:`${n}`,
           description:`${d}`,
           price:Number(p),
-          image: ig
+          image: ig,
+          ptype:t
         }
         console.log(data)
         const token = localStorage.getItem('Byapartoken')
@@ -93,6 +105,12 @@ const Addproduct = () => {
     }
 
 
+    const type = (e)=>{
+      console.log(e.target.value)
+      settype(e.target.value)
+    }
+
+
   return (
     <>
     <Nav/>
@@ -104,7 +122,7 @@ const Addproduct = () => {
 
     
       <div className="leftbox">
-      <input id='imag' type="file" onChange={changebase} accept='.jpeg,.png,.jpg'/>
+      <input id='imag' type="file" onChange={changebase} accept='.png,.jpg'/>
       {/* <label className='imaglabel' htmlFor="imag">chose an image.</label> */}
       <div>
         <p>Choose image</p>
@@ -133,6 +151,13 @@ const Addproduct = () => {
       <input type="number" ref={price} className='pprice' />
 
       </div>
+      <label for="ptype">Choose product type:</label>
+        <select name="Type" onChange={type} id="ptype">
+          <option value="MEN" >MEN</option>
+          <option value="WOMEN" >WOMEN</option>
+          <option value="CHILDREN" >CHILDREN</option>
+          <option value="FOOD" >FOOD</option>
+        </select>
       <button onClick={additem} className='addp'>Add</button>
       <div className={`${load} , loading`}></div>
       <div className='error' ref={err}></div>

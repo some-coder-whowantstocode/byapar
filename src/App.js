@@ -9,9 +9,15 @@ import Profile from './Profile';
 import Products from './Products';
 import Personallist from './Personallist';
 import Cart from './Cart';
+import Searchpage from './Searchpage';
+import Cursor from './Cursor';
+import Producttype from './Producttype';
+import Details from './Details';
+
 
 function App() {
   return (
+    <>
     <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path='/login' element={<Login/>}/>
@@ -21,7 +27,12 @@ function App() {
       <Route path='/products' element={<Products/>}/>
       <Route path='/personallist' element={<Personallist/>}/>
       <Route path='/cart' element={<Cart/>}/>
+      <Route path='/searchpage' element={<Searchpage/>}/>
+      <Route path='/producttype' element={<Producttype/>}/>
+      <Route path='/detail' element={<Details/>}/>
     </Routes>
+{/* <Cursor/> */}
+    </>
   );
 }
 
