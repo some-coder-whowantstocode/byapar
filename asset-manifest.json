@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/byapar/static/css/main.a9d0154b.css",
-    "main.js": "/byapar/static/js/main.756ebe56.js",
+    "main.css": "/byapar/static/css/main.0340bf86.css",
+    "main.js": "/byapar/static/js/main.b72288a5.js",
     "static/media/default.png": "/byapar/static/media/default.59d6a555a823eef49165.png",
     "index.html": "/byapar/index.html",
-    "main.a9d0154b.css.map": "/byapar/static/css/main.a9d0154b.css.map",
-    "main.756ebe56.js.map": "/byapar/static/js/main.756ebe56.js.map"
+    "main.0340bf86.css.map": "/byapar/static/css/main.0340bf86.css.map",
+    "main.b72288a5.js.map": "/byapar/static/js/main.b72288a5.js.map"
   },
   "entrypoints": [
-    "static/css/main.a9d0154b.css",
-    "static/js/main.756ebe56.js"
+    "static/css/main.0340bf86.css",
+    "static/js/main.b72288a5.js"
   ]
 }
