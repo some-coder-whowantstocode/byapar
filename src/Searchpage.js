@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 import axios from 'axios'
 import Header from './Header'
 import Item from './Item'
+import Url from './Url'
 import './searchpage.css'
 
 
@@ -27,7 +28,7 @@ const Searchpage = () => {
 
 
 
-    const url = `https://backend-9jms.onrender.com/byapar/api/v1/search?name=${sn}`
+    const url = `${Url}/byapar/api/v1/search?name=${sn}`
 
     
     

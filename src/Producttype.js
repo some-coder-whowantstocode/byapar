@@ -4,6 +4,7 @@ import Nav from './Nav'
 import axios from 'axios'
 import Header from './Header'
 import Item from './Item'
+import Url from './Url'
 
 const Producttype = () => {
     const location = useLocation()
@@ -15,7 +16,7 @@ const Producttype = () => {
     },[location])
 
 
-    const url = `https://backend-9jms.onrender.com/byapar/api/v1/search?ptype=${type}`
+    const url = `${Url}/byapar/api/v1/search?ptype=${type}`
 
     useEffect(()=>{
       if(type != ''){

@@ -30,3 +30,19 @@
 .prodname:hover{
     text-decoration: underline;
 }
+
+
+/* Responsive design --------------------------------------------------------------------------------------->*/
+
+
+
+@media (width<800px) {
+    .productimage{
+        height: 100px;
+        width: 100px;
+    }
+    .middleproduct{
+        font-size: 1rem;
+       
+    }
+}

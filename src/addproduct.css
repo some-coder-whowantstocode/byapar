@@ -75,3 +75,29 @@
     border: 2px dashed black;
     border-radius: 10px;
 }
+
+
+
+
+
+/* Responsive design --------------------------------------------------------------------------------------->*/
+
+
+
+@media (width<800px) {
+ .dividebox{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: fit-content;
+ }  
+ label{
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+ .pname{
+    width: 100px;
+ }
+}

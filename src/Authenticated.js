@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { Navigate } from 'react-router-dom'
+import Url from './Url'
 
 
 
@@ -15,7 +16,7 @@ const supe =async()=>{
         'Content-Type':'text/json'
       }
       try{
-        const d = await axios.post('https://backend-9jms.onrender.com/byapar/api/v1/user/auth',data,headers)
+        const d = await axios.post(`${Url}/byapar/api/v1/user/auth`,data,headers)
         if(!d){
         throw Error('please check internet connection')
 

@@ -16,3 +16,17 @@
     border: none;
     background: transparent;
 }
+
+
+/* Responsive design --------------------------------------------------------------------------------------->*/
+
+
+
+@media (width<800px) {
+    .searchbar{
+        width: 100px;
+        height: 30px;
+        font-size: 1.1rem;
+    }
+    
+}

@@ -7,6 +7,7 @@ import { Navigate } from 'react-router-dom'
 import Header from './Header'
 import Item from './Item'
 import './personallist.css'
+import Url from './Url'
 
 const Personallist = () => {
 
@@ -34,7 +35,7 @@ const Personallist = () => {
 
 
 
-    const url = `https://backend-9jms.onrender.com/byapar/api/v1/getbycreater`
+    const url = `${Url}/byapar/api/v1/getbycreater`
 
    
 
@@ -73,7 +74,7 @@ const Personallist = () => {
         }
         // console.log(data)
         setload('visible')
-        const d= await axios.post(`https://backend-9jms.onrender.com/byapar/api/v1/deleteproduct/`,data,{headers:Header})
+        const d= await axios.post(`${Url}/byapar/api/v1/deleteproduct/`,data,{headers:Header})
         // console.log(d)
         settoken(localStorage.getItem('Byapartoken'))
         setload('invisible')

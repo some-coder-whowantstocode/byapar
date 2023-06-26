@@ -6,13 +6,14 @@ import { supe } from './Authenticated'
 import { Navigate } from 'react-router-dom'
 import Header from './Header'
 import Item from './Item'
+import Url from './Url'
 
 const Products = () => {
 
     const [products,setproducts] = useState([])
   
 
-    const url = 'https://backend-9jms.onrender.com/byapar/api/v1/getallproducts'
+    const url = `${Url}/byapar/api/v1/getallproducts`
    
     const [login,setlogin]=useState(true)
     useEffect(()=>{

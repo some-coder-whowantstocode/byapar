@@ -6,6 +6,7 @@ import defaul from './default.png'
 import { supe } from './Authenticated'
 import { Navigate } from 'react-router-dom'
 import Resize from './Resize'
+import Url from './Url'
 
 const Addproduct = () => {
 
@@ -79,8 +80,7 @@ const Addproduct = () => {
         try {
           setload("visible");
           const da = await axios.post(
-            "https://backend-9jms.onrender.com/byapar/api/v1/addproduct",
-            // "http://localhost:9310/byapar/api/v1/addproduct",
+            `${Url}/byapar/api/v1/addproduct`,
 
             formData,
             { headers: headers }

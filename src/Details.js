@@ -7,6 +7,7 @@ import axios from 'axios'
 import Header from './Header'
 import {MdLocationOn} from 'react-icons/md'
 import Resize from './Resize'
+import Url from './Url'
 
 
 const Details = () => {
@@ -53,8 +54,7 @@ const Details = () => {
 
         setload('visible')
         const d =await axios.post(
-          `https://backend-9jms.onrender.com/byapar/api/v1/addtocart/:${id}`,
-          // `http://localhost:9310/byapar/api/v1/addtocart/:${id}`,
+          `${Url}/byapar/api/v1/addtocart/:${id}`,
           formdata,
         {headers:Header}
         )
@@ -92,6 +92,8 @@ const Details = () => {
                 <div className="addtocart">
                     <div className='detprice'><sup>₹</sup>{product.price}</div>
                     <div className='detloc'><MdLocationOn className='logo'/>select delivery location.</div>
+                    <div className="adcbox">
+
                  {load == 'invisible' ?
                <div className="middleprod" onClick={()=>addtocart(product._id,product.price,product.name,product._id)} title='Add to cart'>Add to cart</div>
                 :
@@ -100,6 +102,8 @@ const Details = () => {
 
                 </div>
                 } 
+                    </div>
+
                 </div>
             </div>
             :

@@ -29,7 +29,7 @@
     padding: 10px;
 }
 .pricetitle{
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     flex-direction: row-reverse;
     padding-right: 20px;
@@ -101,4 +101,32 @@
 .currency{
     font-size: 1.3rem;
     margin-bottom: 20px;
+}
+
+
+/* Responsive design --------------------------------------------------------------------------------------->*/
+
+
+
+@media (width<800px) {
+   .bottom{
+    position: unset;
+    width: 100vw;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+   }
+   .bottom>button{
+    width: 200px;
+   }
+   .cartbox{
+    /* width: 100vw; */
+    width: inherit;
+    margin: 0px;
+    padding: 10px 0;
+    box-shadow: none;
+    border: 2px solid black;
+   }
 }

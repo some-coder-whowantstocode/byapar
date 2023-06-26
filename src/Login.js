@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
 import './login.css'
 import { Navigate,NavLink } from 'react-router-dom';
+import Url from './Url';
 
 const Login = () => {
 
@@ -29,7 +30,7 @@ const Login = () => {
         }
         setLoad('visible')
 
-        const login = await axios.post('https://backend-9jms.onrender.com/byapar/api/v1/user/login',data,headers)
+        const login = await axios.post(`${Url}/byapar/api/v1/user/login`,data,headers)
         const {details} = login.data
         if(details){
           const token = await login.data.details.token

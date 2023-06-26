@@ -4,6 +4,7 @@ import { supe } from './Authenticated'
 import axios from 'axios'
 import Header from './Header'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+import Url from './Url'
 
 const Cartitem = ({data}) => {
     const [item ,setitem] = useState()
@@ -28,8 +29,7 @@ const Cartitem = ({data}) => {
                 const getdata =async()=>{
                     try{
                     const d = await axios.get(
-                `https://backend-9jms.onrender.com/byapar/api/v1/getoneproduct/:${ido}`,
-                // `http://localhost:9310/byapar/api/v1/getoneproduct/:${ido}`,
+                `${Url}/byapar/api/v1/getoneproduct/:${ido}`,
                 {headers:Header}
                     )
                     if(d.data){
@@ -64,7 +64,7 @@ const Cartitem = ({data}) => {
           }
           try{
               setload('visible')
-              const d =await axios.post('https://backend-9jms.onrender.com/byapar/api/v1/removefromcart/',data,{headers:Header})
+              const d =await axios.post(`${Url}/byapar/api/v1/removefromcart/`,data,{headers:Header})
               console.log(d)
               setload('invisible')
               setrender(true)

@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Navigate,NavLink } from 'react-router-dom'
 import axios from 'axios'
+import Url from './Url'
 
 const Signup = () => {
 
@@ -28,7 +29,7 @@ const Signup = () => {
            'Content-Type':'text/json'
          }
          setload('visible')
-         const login = await axios.post('https://backend-9jms.onrender.com/byapar/api/v1/user/register',data,headers)
+         const login = await axios.post(`${Url}/byapar/api/v1/user/register`,data,headers)
          
          const {details} = login.data
          console.log(details)

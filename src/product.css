@@ -6,4 +6,5 @@
 }
 .pbox{
     display: flex;
+    flex-wrap: wrap;
 }

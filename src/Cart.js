@@ -8,6 +8,7 @@ import Header from './Header'
 import Getdata from './Getdata'
 import Resize from './Resize'
 import Cartitem from './Cartitem'
+import Url from './Url'
 
 const Cart = () => {
 
@@ -29,11 +30,10 @@ const Cart = () => {
 
 
     const [cartitem,setcartitem]=useState([])
-    const [load,setload]=useState('invisible')
     const [render,setrender]=useState(false)
     const [price,setprice]= useState(0)
 
-    const url = 'https://backend-9jms.onrender.com/byapar/api/v1/getfromcart/'
+    const url = `${Url}/byapar/api/v1/getfromcart/`
 
     const [token,settoken]=useState(localStorage.getItem('Byapartoken'))
 
@@ -68,7 +68,17 @@ useEffect(()=>{
   return (
     <div className='cartpage'>
       <Nav/>
+      <div className="bottom">
+      <div className='carttitle'>Total price:
+      <div> 
+          {/* <div className='price'>Price:</div>  */}
+        <div className='currency'>₹ {price} </div>  
+          </div>
+      </div>
 
+       
+          <button>proceed to buy</button>
+          </div>
       <div className='cartbox'>
         <div className='carttitle'>Shopping Cart</div>
         <div className='pricetitle'>price</div>
@@ -86,17 +96,7 @@ useEffect(()=>{
         }
 
       </div>
-      <div className="bottom">
-      <div className='carttitle'>Total price:
-      <div> 
-          {/* <div className='price'>Price:</div>  */}
-        <div className='currency'>₹ {price} </div>  
-          </div>
-      </div>
-
-       
-          <button>proceed to buy</button>
-          </div>
+    
 
       {login == false && <Navigate to={'/login'}/>}
     </div>

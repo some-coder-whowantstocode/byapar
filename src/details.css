@@ -24,7 +24,6 @@
     font-weight: 100;
 }
 .rightdet{
-    /* border: 2px solid black; */
     width: 500px;
 }
 .line{
@@ -79,4 +78,42 @@
 }
 .logo{
     color: black;
+}
+
+
+/* Responsive design --------------------------------------------------------------------------------------->*/
+
+
+
+@media (width<800px) {
+   .det{
+    display: flex;
+    flex-direction: column;
+   }
+   .detimg{
+    width: 200px;
+    height: 250px;
+   }
+   .leftdet{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   }
+   .detname,.detprice,.detabout,.detdeshead,.detdes{
+    margin-left: 10px;
+    font-size: 1rem;
+   }
+   .addtocart{
+    padding: 10px 0;
+    margin: 10px 0;
+    width: 100vw;
+   }
+   .middleprod{
+    width: 300px;
+   }
+   .adcbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   }
 }

@@ -16,8 +16,13 @@
     
 
 }
-.navbar>.leftnav>ul{
+.leftnav>ul{
+    display: flex;
+}
+.navbar>.leftnav>ul>li{
     display:flex;
+    align-items: center;
+    justify-content: center;
     /* border: 2px solid black; */
 }
 .navbar>.leftnav>ul>li{
@@ -89,6 +94,9 @@
 }
 .navprod{
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .navprod:hover>.navprodopt{
     display: block;
@@ -103,4 +111,20 @@
 }
 .ch{
     border-bottom: 1px solid white;
+}
+
+
+
+
+/* Responsive design --------------------------------------------------------------------------------------->*/
+
+
+@media (width<800px) {
+    .navbar{
+        width: 100vw;
+        background-color: black;
+    }
+    .prof{
+        width: fit-content;
+    }
 }
