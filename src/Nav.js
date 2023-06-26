@@ -73,7 +73,7 @@ const Nav = () => {
         isloggedin ?
          <div className='usernav'>
          <NavLink  to='/cart' className={'navlink cartnav'} onMouseEnter={()=>dispatch(change(true))} onMouseLeave={()=>dispatch(change(false))} title='Cart'>🛒</NavLink>
-         <div to='/profile' onClick={changeshow} onMouseEnter={()=>dispatch(change(true))} onMouseLeave={()=>dispatch(change(false))} className='prof '>{profile}
+         <div to='/profile' onClick={changeshow} onMouseEnter={()=>dispatch(change(true))} onMouseLeave={()=>dispatch(change(false))} className='prof '>{profile.slice(0,4)}
          <div className={`navprof ${visibility}`}>
          <Profile/>
          </div>
