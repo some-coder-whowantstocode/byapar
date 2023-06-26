@@ -28,7 +28,8 @@ const Cartitem = ({data}) => {
                 const getdata =async()=>{
                     try{
                     const d = await axios.get(
-                `http://localhost:9310/byapar/api/v1/getoneproduct/:${ido}`,
+                `https://backend-9jms.onrender.com/byapar/api/v1/getoneproduct/:${ido}`,
+                // `http://localhost:9310/byapar/api/v1/getoneproduct/:${ido}`,
                 {headers:Header}
                     )
                     if(d.data){

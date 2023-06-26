@@ -53,8 +53,8 @@ const Details = () => {
 
         setload('visible')
         const d =await axios.post(
-          // `https://backend-9jms.onrender.com/byapar/api/v1/addtocart/:${id}`,
-          `http://localhost:9310/byapar/api/v1/addtocart/:${id}`,
+          `https://backend-9jms.onrender.com/byapar/api/v1/addtocart/:${id}`,
+          // `http://localhost:9310/byapar/api/v1/addtocart/:${id}`,
           formdata,
         {headers:Header}
         )
