@@ -4,6 +4,8 @@ import { useLocation } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 import axios from 'axios'
 import Header from './Header'
+import Item from './Item'
+import './searchpage.css'
 
 
 const Searchpage = () => {
@@ -17,7 +19,6 @@ const Searchpage = () => {
     useEffect(()=>{
       const l = location.state
      
-      console.log(l)
       if(l && l != null && l != undefined){
         setsn(location.state)
 
@@ -33,18 +34,16 @@ const Searchpage = () => {
 
 
     useEffect(()=>{
-      console.log(sn)
       const getdata =async()=>{
         const data = await axios.get(url,{headers:Header})
-        console.log(data)
         setres(data.data)
     }
     getdata()
     },[sn])
 
-    useEffect(()=>{
-      console.log(res)
-    },[res])
+    // useEffect(()=>{
+    //   console.log(res)
+    // },[res])
 
 
   return (
@@ -55,7 +54,7 @@ const Searchpage = () => {
       {
         res.length >0 ?
         res.map((item)=>(
-          <div>{item.name}</div>
+         <Item key={item._id} item={item}/>
         ))
         :
         <div>No results</div>

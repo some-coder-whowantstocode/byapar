@@ -41,8 +41,8 @@ const Login = () => {
         
        }catch(error){
         setLoad('invisible')
-        console.log(error)
-        if(err.response){
+        console.log(error.response)
+        if(error.response){
           err.current.innerText = error.response.data.msg
 
         }else{
@@ -54,6 +54,7 @@ const Login = () => {
 
     useEffect(()=>{
       console.log(load)
+    
     },[load])
 
   return (

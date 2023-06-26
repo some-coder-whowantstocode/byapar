@@ -24,12 +24,12 @@ const supe =async()=>{
 
        
       }catch(error){
+        return false
       
       error.response?
         console.log(await error.response.data.msg)
         :
         console.log(error.message)
-        return false
       }
       
 }

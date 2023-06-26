@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Item from './Item'
 import './nav.css'
-import { NavLink } from 'react-router-dom'
+import { NavLink,useNavigate } from 'react-router-dom'
 import {supe} from './Authenticated'
 import Search from './Search'
 import { useSelector,useDispatch } from 'react-redux'
@@ -18,6 +18,7 @@ const Nav = () => {
   const hoverd = useSelector((state)=>state.hovered.value)
   
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   useEffect(()=>{
    
@@ -28,6 +29,9 @@ const Nav = () => {
         setload(false)
         setprofile(user)
         setisloggedin(true)
+      }
+      else{
+        navigate('/login')
       }
      
     }
@@ -51,10 +55,10 @@ const Nav = () => {
 
       <li className='navprod'><NavLink to="/products" onMouseEnter={()=>dispatch(change(true))} onMouseLeave={()=>dispatch(change(false))} className='navlink'>Products</NavLink>
       <div className='navprodopt'>
-        <li><NavLink to={'/producttype'} className={'navlink'} state={'MEN'}>MEN</NavLink></li>
-        <li><NavLink to={'/producttype'} className={'navlink'} state={'WOMEN'}>WOMEN</NavLink></li>
-        <li><NavLink to={'/producttype'} className={'navlink'} state={'CHILDREN'}>CHILDREN</NavLink></li>
-        <li><NavLink to={'/producttype'} className={'navlink'} state={'FOOD'}>FOOD</NavLink></li>
+        <div><NavLink to={'/producttype'} className={'navlink ch'} state={'MEN'}>MEN</NavLink></div>
+        <div><NavLink to={'/producttype'} className={'navlink ch'} state={'WOMEN'}>WOMEN</NavLink></div>
+        <div><NavLink to={'/producttype'} className={'navlink ch'} state={'CHILDREN'}>CHILDREN</NavLink></div>
+        <div><NavLink to={'/producttype'} className={'navlink ch'} state={'FOOD'}>FOOD</NavLink></div>
         </div>
       </li>
      

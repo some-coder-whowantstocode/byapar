@@ -10,7 +10,6 @@ import Products from './Products';
 import Personallist from './Personallist';
 import Cart from './Cart';
 import Searchpage from './Searchpage';
-import Cursor from './Cursor';
 import Producttype from './Producttype';
 import Details from './Details';
 
@@ -31,7 +30,6 @@ function App() {
       <Route path='/producttype' element={<Producttype/>}/>
       <Route path='/detail' element={<Details/>}/>
     </Routes>
-{/* <Cursor/> */}
     </>
   );
 }

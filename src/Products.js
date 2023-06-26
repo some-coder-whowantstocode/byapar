@@ -19,7 +19,7 @@ const Products = () => {
       const check =async()=>{
         const a = await supe()
         if(a == false){
-          console.log('hi')
+          // //conosle.log('hi')
           setlogin(false)
         
         }
@@ -40,7 +40,8 @@ const Products = () => {
           }catch(error){
             console.log(error)
           }
-           d && setproducts(d.data)
+          //conosle.log(d)
+           d.data && setproducts(d.data)
            
         }
     
@@ -60,7 +61,7 @@ const Products = () => {
       {
         products.length >0 && products.map((p)=>(
 
-              <Item item={p}/>
+              <Item key={p._id} item={p}/>
             
                
 
@@ -68,7 +69,6 @@ const Products = () => {
       }
       </div>
       {login == false && <Navigate to={'/login'}/>}
-      {/* <Cursor/> */}
     </div>
   )
 }

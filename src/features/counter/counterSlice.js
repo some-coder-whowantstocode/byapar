@@ -8,7 +8,7 @@ export const ishoverd = createSlice({
     reducers:{
         change:(state,actions)=>{
            state.value = actions.payload
-            console.log(actions)
+            // console.log(actions)
         }
     }
 })

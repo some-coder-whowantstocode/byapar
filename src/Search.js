@@ -18,8 +18,6 @@ const Search = () => {
     const set =()=>{
       const v = name.current.value
       if(v){
-        console.log(v)
-        // return {value:v}
         setvalue(v)
       }
      

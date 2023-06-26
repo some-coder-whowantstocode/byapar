@@ -8,8 +8,9 @@
     text-decoration: none;
 }
 ::-webkit-scrollbar{
-    background-color: white;
-    width: 10px;
+    /* background-color: white;
+    width: 10px; */
+    display: none;
 }
 ::-webkit-scrollbar-thumb{
     background-color: black;

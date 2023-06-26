@@ -5,6 +5,8 @@ import Nav from './Nav'
 import { supe } from './Authenticated'
 import { Navigate } from 'react-router-dom'
 import Header from './Header'
+import Item from './Item'
+import './personallist.css'
 
 const Personallist = () => {
 
@@ -43,7 +45,7 @@ const Personallist = () => {
           if(token){
               const get =async()=>{
                   const data =await axios.get(url,{headers:Header})
-                  console.log(data)
+                  // console.log(data)
                   setproducts(data.data)
               }
            get()
@@ -55,9 +57,9 @@ const Personallist = () => {
       
     },[token,render])
 
-    useEffect(()=>{
-        console.log(products)
-    },[products])
+    // useEffect(()=>{
+    //     console.log(products)
+    // },[products])
 
 
     const remove =async(id)=>{
@@ -69,10 +71,10 @@ const Personallist = () => {
         const data ={
           id:id
         }
-        console.log(data)
+        // console.log(data)
         setload('visible')
         const d= await axios.post(`https://backend-9jms.onrender.com/byapar/api/v1/deleteproduct/`,data,{headers:Header})
-        console.log(d)
+        // console.log(d)
         settoken(localStorage.getItem('Byapartoken'))
         setload('invisible')
         render==false ? setrender(true) : setrender(false) 
@@ -85,30 +87,13 @@ const Personallist = () => {
   return (
     <div>
       <Nav/>
+      <div className='personallistpage'>
       {
         products.length >0 && products.map((p)=>(
-            <div key={p._id} className='product'>
-            <div className='bigleftproduct'>
-            <div className="leftproduct">
-                <img src={p.image} className='productimage' alt="" />
-
-                </div>
-             
-                <div className="rightproduct">
-                <div>{p.name}</div> 
-                <div>{p.description}</div>
-                <div>{p.price}</div>
-                </div>
-            </div>
-            {load == 'invisible' ?
-                <div className="middleproduct" onClick={()=>remove(p._id)} title='Add to cart'>❌</div>
-               :
-               <div className={`${load} , loading`}></div>
-               } 
-              
-            </div> 
+            <Item key={p._id} item={p&&p}/>
         ))
       }
+      </div>
         {login == false && <Navigate to={'/login'}/>}
     </div>
   )

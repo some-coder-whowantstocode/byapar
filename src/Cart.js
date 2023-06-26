@@ -5,6 +5,9 @@ import axios from 'axios'
 import { supe } from './Authenticated'
 import { Navigate } from 'react-router-dom'
 import Header from './Header'
+import Getdata from './Getdata'
+import Resize from './Resize'
+import Cartitem from './Cartitem'
 
 const Cart = () => {
 
@@ -38,38 +41,18 @@ const Cart = () => {
     
 useEffect(()=>{
     if(token){
-        const getdata =async()=>{
-            const data = await axios.get(url,{headers:Header})
-            console.log(data)
-            setcartitem(data.data)
+        const gd =async()=>{
+          const data =await Getdata(url)
+          console.log(data)
+          setcartitem(data)
         }
-        getdata()
-        console.log('hmm')
+       gd();
     }
    
 },[token,render])
 
 
-const removefromcart =async(id)=>{
-  const a = await supe()
-      if(a == false){
-        setlogin(false)
-      }
-    const data ={
-        _id:id
-    }
-    try{
-        setload('visible')
-        const d =await axios.post('https://backend-9jms.onrender.com/byapar/api/v1/removefromcart/',data,{headers:Header})
-        console.log(d)
-        setload('invisible')
-        render==false ? setrender(true) : setrender(false)
-    }catch(error){
-        setload('invisible')
-        console.log(error)
-    }
- 
-}
+
 
 useEffect(()=>{
     if(cartitem){
@@ -83,40 +66,38 @@ useEffect(()=>{
 
    
   return (
-    <div>
+    <div className='cartpage'>
       <Nav/>
 
-      <div>
+      <div className='cartbox'>
+        <div className='carttitle'>Shopping Cart</div>
+        <div className='pricetitle'>price</div>
+        <hr className='cartline' />
         {
+          
             cartitem.length>0 ?
              cartitem.map((item)=>(
-                <div className='cart'>
-                    <div className='leftcart'>
-                    <div>
-                    <img className='productimage' src={item.image} alt="" />
-                    </div>
-                    <div>
-                    <div>{item.name}</div>
-                <div>{item.price}</div>
-                    </div>
-              
-                    </div>
-                    {load == 'invisible' ?
-               <div className='rightcart' onClick={()=>removefromcart(item._id)} title='remove from cart'><div className='cross'>❌</div></div>
-               :
-               <div className="rightcart">
-               <div className={`${load} , loading`}></div>
-
-               </div>
-               } 
-              
-                </div>
+              <>
+              <Cartitem data={item}/>
+                </>
              ))
              :
              <div>No items.</div>
         }
+
       </div>
-      <div className="bottom"><div> <div className='price'>Price:</div> {price} <div className='currency'>₹</div> </div></div>
+      <div className="bottom">
+      <div className='carttitle'>Total price:
+      <div> 
+          {/* <div className='price'>Price:</div>  */}
+        <div className='currency'>₹ {price} </div>  
+          </div>
+      </div>
+
+       
+          <button>proceed to buy</button>
+          </div>
+
       {login == false && <Navigate to={'/login'}/>}
     </div>
   )

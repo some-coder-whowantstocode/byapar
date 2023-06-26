@@ -1,19 +1,16 @@
 import React from 'react'
 
-const Resize = (base64,width,height ) => {
-    return new Promise((resolve) => {
-        let canvas = document.createElement('canvas')
-        canvas.width = width
-        canvas.height = height
-        let context = canvas.getContext('2d')
-        let img = new Image()
-        img.onload = () => {
-          context.scale(width / img.width, height / img.height)
-          context.drawImage(img, 0, 0)
-          resolve(canvas.toDataURL())
-        }
-        img.src = 'data:image/png;base64,' + base64
-      })
+function Resize  (buffer)  {
+  let b = new Uint8Array(buffer)
+  const CHUNK_SIZE = 0x8000; // arbitrary chunk size
+  let result = '';
+  for (let i = 0; i < b.length; i += CHUNK_SIZE) {
+  const chunk = b.subarray(i, i + CHUNK_SIZE);
+  result += String.fromCharCode.apply(null, chunk);
+  }
+  const r = btoa(result);
+  return 'data:image/png;base64,' + r
+     
 }
 
 export default Resize

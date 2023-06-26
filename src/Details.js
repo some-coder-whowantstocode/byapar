@@ -1,24 +1,26 @@
 import React, { useState,useEffect } from 'react'
 import Nav from './Nav'
-import { useLocation,Navigate } from 'react-router-dom'
+import { useLocation,Navigate,useNavigate } from 'react-router-dom'
 import './details.css'
 import { supe } from './Authenticated'
 import axios from 'axios'
 import Header from './Header'
 import {MdLocationOn} from 'react-icons/md'
+import Resize from './Resize'
 
 
 const Details = () => {
     const location = useLocation()
     const [product,setproduct]=useState({})
     const [load,setload] = useState('invisible')
+    const [imgurl,setimgurl] = useState()
 
     const [login,setlogin]=useState(true)
     useEffect(()=>{
       const check =async()=>{
         const a = await supe()
         if(a == false){
-          console.log('hi')
+          // console.log('hi')
           setlogin(false)
         
         }
@@ -29,32 +31,41 @@ const Details = () => {
 
     useState(()=>{
         setproduct(location.state)
+       const r = Resize(location.state.image.data)
+       setimgurl(r)
+      //  console.log(location.state)
     },[location])
 
-
-   const addtocart =async(id,price,name,image)=>{
+    const  navigate = useNavigate();
+   const addtocart =async(id,price,name,loc)=>{
       const a = await supe()
       if(a == false){
         setlogin(false)
       }
-      const data ={
-        productid:id.toString(),
-        price:price,
-        name:name,
-        image:image
-      }
-      console.log(data)
+      const formdata = new FormData();
+      formdata.append("productid",id);
+      formdata.append("price",price);
+      formdata.append("name",name);
+      formdata.append("location",location)
+      // console.log(formdata.get('file'))
+
       try{
+
         setload('visible')
-        const d =await axios.post(`https://backend-9jms.onrender.com/byapar/api/v1/addtocart/:${id}`,data,{headers:Header})
-        console.log(d)
+        const d =await axios.post(
+          // `https://backend-9jms.onrender.com/byapar/api/v1/addtocart/:${id}`,
+          `http://localhost:9310/byapar/api/v1/addtocart/:${id}`,
+          formdata,
+        {headers:Header}
+        )
         setload('invisible')
+      navigate('/cart')
       }catch(error){
         setload('invisible')
         console.log(error)
       }
 
-      console.log(id)
+      // console.log(id)
     }
 
 
@@ -66,7 +77,7 @@ const Details = () => {
             Object.keys(product).length>0 ?
             <div className='det'>
                 <div className="leftdet">
-                <img className='detimg' src={`${product.image}`} alt="" />
+                <img className='detimg' src={imgurl && imgurl} alt="" />
 
                 </div>
                 <div className="rightdet">
@@ -82,7 +93,7 @@ const Details = () => {
                     <div className='detprice'><sup>₹</sup>{product.price}</div>
                     <div className='detloc'><MdLocationOn className='logo'/>select delivery location.</div>
                  {load == 'invisible' ?
-               <div className="middleprod" onClick={()=>addtocart(product._id,product.productrice,product.name,product.image)} title='Add to cart'>Add to cart</div>
+               <div className="middleprod" onClick={()=>addtocart(product._id,product.price,product.name,product._id)} title='Add to cart'>Add to cart</div>
                 :
                 <div className="middleprod">
                 <div className={`${load} , loading`}></div>

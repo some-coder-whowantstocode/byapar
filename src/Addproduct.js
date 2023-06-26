@@ -28,22 +28,26 @@ const Addproduct = () => {
     const description = useRef()
     const price = useRef()
     const [ig,setig]= useState(defaul)
+    const [si,setsi] = useState(defaul)
     const [resize,setresize]=useState(defaul)
     const [load,setload]=useState('invisible')
     const err = useRef()
     const [typ,settype]=useState('MEN')
     
 
-    const changebase =(e)=>{
+    const changebase =async(e)=>{
+      console.log('start')
       if(e.target.files[0]){
+          setsi(e.target.files[0])
+
         const filereader = new FileReader();
         filereader.readAsDataURL(e.target.files[0])
+        let base64String
         filereader.onload =(event)=>{
-          const base64String = event.target.result
+          base64String = event.target.result
           setig(base64String)
-        
-    
         }
+      
       }
     }
 
@@ -59,45 +63,48 @@ const Addproduct = () => {
       const p = await price.current.value
       const t = typ
       console.log(typ)
-      if(ig || n !== '' || d !== '' || p!=='' || t!==''){
+      if(si || n !== '' || d !== '' || p!=='' || t!==''){
+        const formData = new FormData();
+        formData.append("name", n);
+        formData.append("description", d);
+        formData.append("price", p);
+        formData.append("file", si);
+        formData.append("ptype", t);
+    
+        const token = localStorage.getItem("Byapartoken");
+        const headers = {
+          "Content-Type": "multipart/form-data",
+          authorization: `${token}`,
+        };
+        try {
+          setload("visible");
+          const da = await axios.post(
+            "https://backend-9jms.onrender.com/byapar/api/v1/addproduct",
+            // "http://localhost:9310/byapar/api/v1/addproduct",
+
+            formData,
+            { headers: headers }
+          );
        
-        const data ={
-          name:`${n}`,
-          description:`${d}`,
-          price:Number(p),
-          image: ig,
-          ptype:t
-        }
-        console.log(data)
-        const token = localStorage.getItem('Byapartoken')
-        const headers ={
-          'Content-Type':'application/json',
-          'authorization': `${token}`
-        }
-        console.log(token)
-        try{
-          setload('visible')
-          const da = await axios.post('https://backend-9jms.onrender.com/byapar/api/v1/addproduct',data,{headers:headers})
-          
-          
-        console.log(da)
-        name.current.value =''
-        description.current.value =''
-        price.current.value = ''
-        setig(defaul)
         setload('invisible')
         }catch(error){
           setload('invisible')
           if(error.response){
-            console.log(error.response.data.msg)
-            err.current.innerText = error.response.data.msg
+            console.log(error.response)
+            if(err.current){
+              err.current.innerText = error.response.data.msg
+
+            }
           }else{
             
-            console.log(error.message)
+            console.log(error)
             err.current.innerText = error.message
           }
         }
-          
+        name.current.value =''
+        description.current.value =''
+        price.current.value = ''
+        // setig(defaul)
       }
        
      
@@ -106,7 +113,7 @@ const Addproduct = () => {
 
 
     const type = (e)=>{
-      console.log(e.target.value)
+      // console.log(e.target.value)
       settype(e.target.value)
     }
 
@@ -122,11 +129,10 @@ const Addproduct = () => {
 
     
       <div className="leftbox">
-      <input id='imag' type="file" onChange={changebase} accept='.png,.jpg'/>
-      {/* <label className='imaglabel' htmlFor="imag">chose an image.</label> */}
+      <input id='imag' type="file" name='file' onChange={changebase} accept='.png,.jpg'/>
       <div>
         <p>Choose image</p>
-        <label htmlFor="imag">
+        <label for="imag">
         <img src={ig} className='pimage' alt="" />
 
         </label>
