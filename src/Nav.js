@@ -24,6 +24,10 @@ const Nav = () => {
    
     const userinfo=async()=>{
       const a = await supe()
+      if(a==false){
+        setload(false)
+        navigate('/login')
+      }
       if(a){
         const user = a.name
         setload(false)
@@ -69,7 +73,8 @@ const Nav = () => {
       </div>
       <div className="rightnav">
        
-        {load ? <div className="loading"></div> :
+        {
+        load ? <div className="loading"></div> :
         isloggedin ?
          <div className='usernav'>
          <NavLink  to='/cart' className={'navlink cartnav'} onMouseEnter={()=>dispatch(change(true))} onMouseLeave={()=>dispatch(change(false))} title='Cart'>🛒</NavLink>
