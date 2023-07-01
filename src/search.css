@@ -4,11 +4,11 @@
     
 }
 .searchbar{
-    width: 400px;
-    height: 30px;
-    border-radius: 7px;
+    width: 600px;
+    height: 40px;
     border: 1px solid gray;
     padding: 0 10px;
+    font-size: 1.3rem;
 }
 .searchbtn{
     position: absolute;
@@ -16,6 +16,7 @@
     top: 20%;
     border: none;
     background: transparent;
+    font-size: 1.2rem;
 }
 
 
@@ -35,6 +36,9 @@
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+    .searchbtn{
+        font-size: 1.1rem;
     }
     
 }

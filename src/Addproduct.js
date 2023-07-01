@@ -132,7 +132,7 @@ const Addproduct = () => {
       <input id='imag' type="file" name='file' onChange={changebase} accept='.png,.jpg'/>
       <div>
         <p>Choose image</p>
-        <label for="imag">
+        <label htmlFor="imag">
         <img src={ig} className='pimage' alt="" />
 
         </label>
@@ -157,7 +157,7 @@ const Addproduct = () => {
       <input type="number" ref={price} className='pprice' />
 
       </div>
-      <label for="ptype">Choose product type:</label>
+      <label htmlFor="ptype">Choose product type:</label>
         <select name="Type" onChange={type} id="ptype">
           <option value="MEN" >MEN</option>
           <option value="WOMEN" >WOMEN</option>

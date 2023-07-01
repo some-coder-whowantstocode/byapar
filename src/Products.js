@@ -38,11 +38,11 @@ const Products = () => {
           let d;
           try{
              d =await axios.get(url,{headers:Header})
+           d.data && setproducts(d.data)
           }catch(error){
             console.log(error)
           }
           //conosle.log(d)
-           d.data && setproducts(d.data)
            
         }
     

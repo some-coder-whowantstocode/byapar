@@ -40,14 +40,19 @@ const Cart = () => {
     
     
 useEffect(()=>{
+  try{
     if(token){
-        const gd =async()=>{
-          const data =await Getdata(url)
-          console.log(data)
-          setcartitem(data)
-        }
-       gd();
-    }
+      const gd =async()=>{
+        const data =await Getdata(url)
+        console.log(data)
+        setcartitem(data)
+      }
+     gd();
+  }
+  }catch(error){
+    console.log(error)
+  }
+  
    
 },[token,render])
 

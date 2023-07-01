@@ -1,0 +1,33 @@
+.resultpage{
+    display: flex;
+}
+.leftresultpage{
+    width: 200px;
+    border-right: 2px solid rgb(193, 190, 190);
+}
+.rightresultpage{
+    display: flex;
+}
+.amountso{
+    margin-left: 10px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.black{
+    margin-left: 10px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.black:hover{
+    color: gray;
+}
+.amountso:hover{
+    color: gray;
+}
+.searchoptionheadline{
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 5px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}

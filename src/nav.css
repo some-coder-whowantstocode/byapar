@@ -5,7 +5,7 @@
     width: fit-content;
     align-items: center;
     justify-content: space-between;
-    padding-top: 6px;
+    /* padding-top: 6px; */
     background-color: black;
     color: white;
     position:sticky;
@@ -13,8 +13,8 @@
     top: 0;
     box-shadow: -1px 1px 5px 0px rgba(0,0,0,0.75);
     min-height: 50px;
-    
-
+    padding-bottom: 10px;
+    font-size: 1.3rem;
 }
 .leftnav>ul{
     display: flex;
@@ -27,10 +27,10 @@
 }
 .navbar>.leftnav>ul>li{
     list-style: none;
-    margin: 8px 8px;
+    margin: 0px 8px;
     color: white;
     font-size: 1rem;
-    padding-bottom: 10px;
+    /* padding-bottom: 10px; */
 }
 .navbar>ul>li:hover{
     /* color: gray; */
@@ -52,6 +52,11 @@
     color: white;
     padding: 4px;
     
+}
+.middlenav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .navsignup:hover{
     border-radius: 4px;
@@ -106,13 +111,16 @@
     display: none;
     position: absolute;
     left: -4px;
-    top: 30px;
+    top: 20px;
     background-color: black;
     padding: 10px;
     z-index: 100;
 }
 .ch{
     border-bottom: 1px solid white;
+}
+.navt{
+    font-size: 1.3rem;
 }
 
 
@@ -128,10 +136,14 @@
         position: relative;
         flex-direction: column;
         align-items: unset;
+        font-size: 1.1rem;
         /* display: inline-block; */
     }
     .prof{
         width: fit-content;
+    }
+    .leftnav{
+        padding: 20px ;
     }
     .middlenav{
         
@@ -143,8 +155,11 @@
     }
     .rightnav{
         position: absolute;
-        right: 4px;
-        top: 13px;
+        right: 20px;
+        top: 20px;
+    }
+    .navt{
+        font-size: 1.1rem;
     }
 
 }

@@ -1,4 +1,8 @@
 .resultpage{
     display: flex;
+    /* flex-wrap: wrap; */
+}
+.rightresultpage{
+    display: flex;
     flex-wrap: wrap;
 }

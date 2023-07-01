@@ -12,6 +12,7 @@ import Cart from './Cart';
 import Searchpage from './Searchpage';
 import Producttype from './Producttype';
 import Details from './Details';
+import Review from './Review';
 
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
       <Route path='/searchpage' element={<Searchpage/>}/>
       <Route path='/producttype' element={<Producttype/>}/>
       <Route path='/detail' element={<Details/>}/>
+      <Route path='/review' element={<Review/>}/>
+      
     </Routes>
     </>
   );

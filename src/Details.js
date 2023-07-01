@@ -8,6 +8,7 @@ import Header from './Header'
 import {MdLocationOn} from 'react-icons/md'
 import Resize from './Resize'
 import Url from './Url'
+import Review from './Review'
 
 
 const Details = () => {
@@ -38,7 +39,7 @@ const Details = () => {
     },[location])
 
     const  navigate = useNavigate();
-   const addtocart =async(id,price,name,loc)=>{
+   const addtocart =async(id,price,name)=>{
       const a = await supe()
       if(a == false){
         setlogin(false)
@@ -47,7 +48,6 @@ const Details = () => {
       formdata.append("productid",id);
       formdata.append("price",price);
       formdata.append("name",name);
-      formdata.append("location",location)
       // console.log(formdata.get('file'))
 
       try{
@@ -75,6 +75,7 @@ const Details = () => {
       <div className='detail'>
         {
             Object.keys(product).length>0 ?
+            <>
             <div className='det'>
                 <div className="leftdet">
                 <img className='detimg' src={imgurl && imgurl} alt="" />
@@ -95,7 +96,7 @@ const Details = () => {
                     <div className="adcbox">
 
                  {load == 'invisible' ?
-               <div className="middleprod" onClick={()=>addtocart(product._id,product.price,product.name,product._id)} title='Add to cart'>Add to cart</div>
+               <div className="middleprod" onClick={()=>addtocart(product._id,product.price,product.name)} title='Add to cart'>Add to cart</div>
                 :
                 <div className="middleprod">
                 <div className={`${load} , loading`}></div>
@@ -106,6 +107,9 @@ const Details = () => {
 
                 </div>
             </div>
+            <Review product={product._id}/>
+
+            </>
             :
             <div>please wait....</div>
         }
