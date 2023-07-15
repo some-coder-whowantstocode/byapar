@@ -11,6 +11,8 @@ import Url from './Url'
 const Products = () => {
 
     const [products,setproducts] = useState([])
+    const [gridfs,setgridfs] = useState([])
+    const [load,setload] = useState('invisible')
   
 
     const url = `${Url}/byapar/api/v1/getallproducts`
@@ -37,8 +39,15 @@ const Products = () => {
         const getproduct  = async()=>{
           let d;
           try{
+            setload('visible')
              d =await axios.get(url,{headers:Header})
-           d.data && setproducts(d.data)
+             console.log(d)
+            if(d.data){
+              
+              setproducts(d.data.products);
+              setgridfs(d.data.grids);
+            }
+            setload('invisible')
           }catch(error){
             console.log(error)
           }
@@ -60,9 +69,14 @@ const Products = () => {
       <Nav/>
       <div className='pbox'>
       {
-        products.length >0 && products.map((p)=>(
+        load == 'visible'?
+        <div className='loading'></div>
+        :
+        Array.isArray(products) &&products.length >0&& products.map((p)=>(
 
-              <Item key={p._id} item={p}/>
+              <Item key={p._id} item={p} image={
+              gridfs && gridfs.find((grid)=>grid._id == p.gridid)
+              }/>
             
                
 

@@ -8,6 +8,7 @@ import Header from './Header'
 import Item from './Item'
 import './personallist.css'
 import Url from './Url'
+import { isVisible } from '@testing-library/user-event/dist/utils'
 
 const Personallist = () => {
 
@@ -31,6 +32,7 @@ const Personallist = () => {
     const [token,settoken] = useState(localStorage.getItem('Byapartoken'))
     const [products,setproducts] = useState([])
     const [load,setload]= useState('invisible')
+    const [image,setimage] = useState([]);
     const [render,setrender]=useState(false)
 
 
@@ -45,13 +47,17 @@ const Personallist = () => {
         try{
           if(token){
               const get =async()=>{
+                setload('visible')
                   const data =await axios.get(url,{headers:Header})
-                  // console.log(data)
-                  setproducts(data.data)
+                  console.log(data)
+                  setimage(data.data.grids)
+                  setproducts(data.data.product)
+                  setload('invisible')
               }
            get()
           }
       }catch(error){
+        setload('invisible')
           console.log(error)
       }
       }
@@ -65,6 +71,7 @@ const Personallist = () => {
 
     const remove =async(id)=>{
       const a = await supe()
+      console.log('hi')
       if(a == false){
         setlogin(false)
       }
@@ -73,11 +80,11 @@ const Personallist = () => {
           id:id
         }
         // console.log(data)
-        setload('visible')
+       
         const d= await axios.post(`${Url}/byapar/api/v1/deleteproduct/`,data,{headers:Header})
         // console.log(d)
         settoken(localStorage.getItem('Byapartoken'))
-        setload('invisible')
+       
         render==false ? setrender(true) : setrender(false) 
       }catch(error){
         setload('invisible')
@@ -90,10 +97,20 @@ const Personallist = () => {
       <Nav/>
       <div className='personallistpage'>
       {
-        products.length >0 && products.map((p)=>(
-            <Item key={p._id} item={p&&p}/>
-        ))
+        load == 'visible' ?
+        <div className="loading"></div>
+        :
+        
+          products.length >0 && products.map((p)=>(
+            <div>
+ <Item key={p._id} item={p&&p} image={image && image.filter((image) => image._id==p.gridid)}/>
+ <span className='del' onClick={()=>remove(p._id)}>remove</span>
+            </div>
+             
+          ))
+        
       }
+   
       </div>
         {login == false && <Navigate to={'/login'}/>}
     </div>

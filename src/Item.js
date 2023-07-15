@@ -3,16 +3,35 @@ import './item.css'
 import { NavLink } from 'react-router-dom'
 import Resize from './Resize'
 
-const Item = ({item}) => {
+const Item = ({item,image}) => {
   const [p,setp]= useState({})
   const [url,seturl] = useState()
     useEffect(()=>{
         // console.log(item)
-        let a = item.image.data
+        let a = item
        const r = Resize(a)
         setp(item)
-        seturl(r)
     },[item])
+
+    useEffect(()=>{
+      // console.log(image)
+      try{
+        if(image.chunk){
+     
+          console.log(image.chunk)
+          seturl(image.chunk)
+         }else{
+           seturl(image[0].chunk)
+         }
+      }catch(error){
+        console.log(error)
+      }
+    
+    },[image])
+
+    useEffect(()=>{
+      // console.log(url)
+    },[url])
 
 
   return (
@@ -24,14 +43,14 @@ const Item = ({item}) => {
         
          <div key={p._id} className='product'>
          <div className="leftproduct">
-             <NavLink className={NavLink} to={'/detail'} state={p}>
-             <img src={url && url} className='productimage' alt="" />
+             <NavLink className={NavLink} to={'/detail'} state={{product:p && p,imageurl:url && url}}>
+             <img src={url && `${ url}`} className='productimage' alt="" />
              </NavLink>
 
              </div>
           
              <div className="rightproduct">
-             <span><NavLink to={'/detail'} state={p}  className='prodname navlink'>{p.name}</NavLink> </span>
+             <span><NavLink to={'/detail'} state={{product:p && p,imageurl:url && url}}  className='prodname navlink'>{p.name}</NavLink> </span>
              <div><sup>₹</sup>{p.price}</div>
              </div>
          </div> 

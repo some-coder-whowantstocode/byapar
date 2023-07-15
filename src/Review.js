@@ -80,7 +80,7 @@ const removereview = async(d)=>{
             <div className='rreview'>{r.review}</div>
             {
                 user == r.userid && <div>
-                    <div className='del' onClick={()=>removereview((r._id))}>delete</div>
+                    <span className='del' onClick={()=>removereview((r._id))}>delete</span>
                 </div>
             }
             </div>

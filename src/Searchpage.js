@@ -38,6 +38,7 @@ useEffect(()=>{
     const name = useRef(sa)
     const [sn,setsn]=useState()
     const [res,setres] = useState([])
+    const [grid,setgrid] =useState([])
 
 
     useEffect(()=>{
@@ -62,8 +63,9 @@ useEffect(()=>{
         try{
           setload(true)
           const dat = await axios.get(url,{headers:Header})
-          setres(dat.data)
-          // console.log(dat)
+          setres(dat.data.product)
+          setgrid(dat.data.grid)
+          console.log(dat)
           setload(false)
         }catch(error){
           console.log(error)
@@ -94,7 +96,7 @@ useEffect(()=>{
         <div className="loading"></div>
         :
         res.map((item)=>(
-         <Item key={item._id} item={item}/>
+         <Item key={item._id} item={item} image={grid && grid.filter((g)=>g._id == item.gridid)}/>
         ))
         :
         load? 

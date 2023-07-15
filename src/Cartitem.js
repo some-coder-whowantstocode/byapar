@@ -6,7 +6,7 @@ import Header from './Header'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import Url from './Url'
 
-const Cartitem = ({data}) => {
+const Cartitem = ({data,grid}) => {
     const [item ,setitem] = useState()
     const [imgurl,setimgurl] = useState()
     const [login,setlogin] = useState(true)
@@ -24,27 +24,9 @@ const Cartitem = ({data}) => {
 
 
     useEffect(()=>{
-        if(ido){
-         
-                const getdata =async()=>{
-                    try{
-                    const d = await axios.get(
-                `${Url}/byapar/api/v1/getoneproduct/:${ido}`,
-                {headers:Header}
-                    )
-                    if(d.data){
-                        const a = await Resize(d.data.image.data)
-                        setimgurl(a)
-                    }
-                }catch(error){
-                    console.log(error)
-                }
-                }
-                getdata()
-          
-           
-        }
-    },[ido])
+        console.log(grid);
+        setimgurl(grid[0].chunk)
+    },[grid])
 
     useEffect(()=>{
         if(render){

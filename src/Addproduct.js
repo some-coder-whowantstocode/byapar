@@ -29,17 +29,16 @@ const Addproduct = () => {
     const description = useRef()
     const price = useRef()
     const [ig,setig]= useState(defaul)
-    const [si,setsi] = useState(defaul)
     const [resize,setresize]=useState(defaul)
     const [load,setload]=useState('invisible')
     const err = useRef()
     const [typ,settype]=useState('MEN')
     
-
+//  change the image to base64
     const changebase =async(e)=>{
       console.log('start')
       if(e.target.files[0]){
-          setsi(e.target.files[0])
+
 
         const filereader = new FileReader();
         filereader.readAsDataURL(e.target.files[0])
@@ -52,7 +51,7 @@ const Addproduct = () => {
       }
     }
 
-
+// 
     const additem =async(e)=>{
       const a = await supe()
       if(a == false){
@@ -64,17 +63,18 @@ const Addproduct = () => {
       const p = await price.current.value
       const t = typ
       console.log(typ)
-      if(si || n !== '' || d !== '' || p!=='' || t!==''){
+      if(ig || n !== '' || d !== '' || p!=='' || t!==''){
         const formData = new FormData();
         formData.append("name", n);
         formData.append("description", d);
         formData.append("price", p);
-        formData.append("file", si);
+        formData.append("file", ig);
         formData.append("ptype", t);
     
         const token = localStorage.getItem("Byapartoken");
         const headers = {
-          "Content-Type": "multipart/form-data",
+          // "Content-Type": "multipart/form-data",
+          "Content-Type":"application/json",
           authorization: `${token}`,
         };
         try {

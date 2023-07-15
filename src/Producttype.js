@@ -10,6 +10,7 @@ const Producttype = () => {
     const location = useLocation()
     const [type,settype] = useState('')
     const [product,setproduct] = useState([])
+    const [grid,setgrid] = useState([])
     useEffect(()=>{
         console.log(location.state)
         settype(location.state)
@@ -24,7 +25,8 @@ const Producttype = () => {
           const getdata = async()=>{
             const data =await axios.get(url,{headers: Header})
             console.log(data)
-            setproduct(data.data)
+            setgrid(data.data.grid)
+            setproduct(data.data.product)
           }
        getdata()
         }catch(error){
@@ -46,7 +48,7 @@ const Producttype = () => {
         {
           product.length>0 ?
            product.map((item)=>(
-            <Item item={item}/>
+            <Item item={item} image={grid&& grid.filter((g)=>g._id == item.gridid)}/>
             
           ))
           :

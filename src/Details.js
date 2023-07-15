@@ -32,14 +32,19 @@ const Details = () => {
     },[])
 
     useState(()=>{
-        setproduct(location.state)
-       const r = Resize(location.state.image.data)
-       setimgurl(r)
-      //  console.log(location.state)
+      // console.log(location.state)
+try{
+  setproduct(location.state.product)
+  //  const r = Resize(location.state.image.data)
+   setimgurl(location.state.imageurl)
+}catch(error){
+  console.log(error)
+}
+        
     },[location])
 
     const  navigate = useNavigate();
-   const addtocart =async(id,price,name)=>{
+   const addtocart =async(id,price,name,gridid)=>{
       const a = await supe()
       if(a == false){
         setlogin(false)
@@ -48,6 +53,7 @@ const Details = () => {
       formdata.append("productid",id);
       formdata.append("price",price);
       formdata.append("name",name);
+      formdata.append('gridid',gridid);
       // console.log(formdata.get('file'))
 
       try{
@@ -96,7 +102,7 @@ const Details = () => {
                     <div className="adcbox">
 
                  {load == 'invisible' ?
-               <div className="middleprod" onClick={()=>addtocart(product._id,product.price,product.name)} title='Add to cart'>Add to cart</div>
+               <div className="middleprod" onClick={()=>addtocart(product._id,product.price,product.name,product.gridid)} title='Add to cart'>Add to cart</div>
                 :
                 <div className="middleprod">
                 <div className={`${load} , loading`}></div>

@@ -32,6 +32,8 @@ const Cart = () => {
     const [cartitem,setcartitem]=useState([])
     const [render,setrender]=useState(false)
     const [price,setprice]= useState(0)
+    const [gride,setgrid] = useState([])
+    const [load,setload] = useState('invisible')
 
     const url = `${Url}/byapar/api/v1/getfromcart/`
 
@@ -43,9 +45,12 @@ useEffect(()=>{
   try{
     if(token){
       const gd =async()=>{
+        setload('visible')
         const data =await Getdata(url)
         console.log(data)
-        setcartitem(data)
+        setcartitem(data.items)
+        setgrid(data.grid)
+        setload('invisible')
       }
      gd();
   }
@@ -60,13 +65,18 @@ useEffect(()=>{
 
 
 useEffect(()=>{
+  try{
     if(cartitem){
-        let p = 0;
-        cartitem.forEach((e)=>{
-           p += e.price;
-        })
-        setprice(p)
-    }
+      let p = 0;
+      cartitem.forEach((e)=>{
+         p += e.price;
+      })
+      setprice(p)
+  }
+  }catch(err){
+    console.log(err)
+  }
+ 
 },[cartitem])
 
    
@@ -89,11 +99,13 @@ useEffect(()=>{
         <div className='pricetitle'>price</div>
         <hr className='cartline' />
         {
-          
+          load == 'visible' ?
+          <div className='loading'></div>
+          :
             cartitem.length>0 ?
              cartitem.map((item)=>(
               <>
-              <Cartitem data={item}/>
+              <Cartitem data={item} grid={gride && gride.filter((grid)=> grid._id == item.gridid)}/>
                 </>
              ))
              :
