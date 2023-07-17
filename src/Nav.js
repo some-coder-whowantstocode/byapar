@@ -57,7 +57,7 @@ const Nav = () => {
       <ul>
       <li><NavLink to="/" onMouseEnter={()=>dispatch(change(true))} onMouseLeave={()=>dispatch(change(false))} className='navlink navt'>Home</NavLink></li>
 
-      <li className='navprod'><NavLink to="/products" onMouseEnter={()=>dispatch(change(true))} onMouseLeave={()=>dispatch(change(false))} className='navlink navt'>Products</NavLink>
+      <li className='navprod'><NavLink  onMouseEnter={()=>dispatch(change(true))} onMouseLeave={()=>dispatch(change(false))} className='navlink navt'>Products</NavLink>
       <div className='navprodopt'>
         <div><NavLink to={'/producttype'} className={'navlink ch'} state={'MEN'}>MEN</NavLink></div>
         <div><NavLink to={'/producttype'} className={'navlink ch'} state={'WOMEN'}>WOMEN</NavLink></div>

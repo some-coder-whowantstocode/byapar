@@ -13,7 +13,7 @@ import Searchpage from './Searchpage';
 import Producttype from './Producttype';
 import Details from './Details';
 import Review from './Review';
-
+import Buy from './Buy';
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
       <Route path='/producttype' element={<Producttype/>}/>
       <Route path='/detail' element={<Details/>}/>
       <Route path='/review' element={<Review/>}/>
-      
+      <Route path='/buy' element={<Buy/>}/>
     </Routes>
     </>
   );

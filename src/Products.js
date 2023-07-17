@@ -15,7 +15,7 @@ const Products = () => {
     const [load,setload] = useState('invisible')
   
 
-    const url = `${Url}/byapar/api/v1/getallproducts`
+  
    
     const [login,setlogin]=useState(true)
     useEffect(()=>{
@@ -31,7 +31,7 @@ const Products = () => {
       check()
     },[])
 
-   
+    const url = `${Url}/byapar/api/v1/getallproducts`
     useEffect(()=>{
       
     

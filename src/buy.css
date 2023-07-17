@@ -1,0 +1,60 @@
+.buy_table{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.pricebox{
+    display: flex;
+}
+.provide_details{
+    display: flex;
+    flex-direction: column;
+    line-height: 3rem;
+    width: 400px;
+    background-color: white;
+    padding: 20px;
+    border: 1px soild white;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+}
+.inputsymbol{
+    font-size: 1.4rem;
+    padding: 1px 7px;
+    background: #bcbcbc;
+    height: 45px;
+}
+.paydet{
+    color: rgb(0, 136, 255);
+}
+.writing{
+    font-family: monospace;
+    font-size: 1rem;
+}
+.country{
+    padding: 13px 5px;
+    /* font-size: 1rem; */
+    border: 1px solid rgba(203, 207, 211, 0.979);
+
+    
+}
+.inputbuy{
+    height: 45px;
+    outline: none;
+    border: 1px solid rgba(203, 207, 211, 0.979);
+    width: 100%;
+}
+.phonebox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buybtn{
+    margin:10px 0;
+    background-color: rgb(7, 73, 124);
+    color: white;
+    padding: 5px 0;
+    cursor: pointer;
+}

@@ -7,6 +7,7 @@ import { supe } from './Authenticated'
 import { Navigate } from 'react-router-dom'
 import Resize from './Resize'
 import Url from './Url'
+import Header from './Header'
 
 const Addproduct = () => {
 
@@ -72,18 +73,14 @@ const Addproduct = () => {
         formData.append("ptype", t);
     
         const token = localStorage.getItem("Byapartoken");
-        const headers = {
-          // "Content-Type": "multipart/form-data",
-          "Content-Type":"application/json",
-          authorization: `${token}`,
-        };
+     
         try {
           setload("visible");
           const da = await axios.post(
             `${Url}/byapar/api/v1/addproduct`,
 
             formData,
-            { headers: headers }
+            { headers: Header }
           );
        
         setload('invisible')

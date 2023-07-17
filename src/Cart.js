@@ -3,12 +3,13 @@ import './cart.css'
 import Nav from './Nav'
 import axios from 'axios'
 import { supe } from './Authenticated'
-import { Navigate } from 'react-router-dom'
+import { NavLink, Navigate } from 'react-router-dom'
 import Header from './Header'
 import Getdata from './Getdata'
 import Resize from './Resize'
 import Cartitem from './Cartitem'
 import Url from './Url'
+import Buy from './Buy'
 
 const Cart = () => {
 
@@ -18,7 +19,7 @@ const Cart = () => {
       const check =async()=>{
         const a = await supe()
         if(a == false){
-          console.log('hi')
+          // console.log('hi')
           setlogin(false)
         
         }
@@ -34,6 +35,7 @@ const Cart = () => {
     const [price,setprice]= useState(0)
     const [gride,setgrid] = useState([])
     const [load,setload] = useState('invisible')
+    const [items,setitem] = useState([])
 
     const url = `${Url}/byapar/api/v1/getfromcart/`
 
@@ -72,7 +74,11 @@ useEffect(()=>{
          p += e.price;
       })
       setprice(p)
+      cartitem.forEach((e)=>{
+        setitem([...items,e.name])
+      })
   }
+  
   }catch(err){
     console.log(err)
   }
@@ -92,7 +98,7 @@ useEffect(()=>{
       </div>
 
        
-          <button>proceed to buy</button>
+          <NavLink className='navlink button' state={price&&items&&{amount:price,products:items}} to={'/buy'}>proceed to buy</NavLink>
           </div>
       <div className='cartbox'>
         <div className='carttitle'>Shopping Cart</div>
@@ -114,7 +120,6 @@ useEffect(()=>{
 
       </div>
     
-
       {login == false && <Navigate to={'/login'}/>}
     </div>
   )

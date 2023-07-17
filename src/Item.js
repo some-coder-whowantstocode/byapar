@@ -18,7 +18,7 @@ const Item = ({item,image}) => {
       try{
         if(image.chunk){
      
-          console.log(image.chunk)
+          // console.log(image.chunk)
           seturl(image.chunk)
          }else{
            seturl(image[0].chunk)

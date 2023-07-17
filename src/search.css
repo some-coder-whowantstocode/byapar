@@ -1,14 +1,36 @@
+.livehouse{
+    background-color: white;
+    max-height: 80vh;
+}
+.liveresults{
+    color: black;
+    background-color: white;
+    display: flex;
+    padding: 4px 0;
+}
+.livename{
+    color: black;
+}
+.livename:hover{
+    color: black;
+    text-decoration: none;
+    text-decoration-style: none;
+}
+.liveimg{
+    height: 40px;
+    width: 40px;
+}
 .search{
     position: relative;
     height: 30px;
-    
 }
 .searchbar{
     width: 600px;
     height: 40px;
-    border: 1px solid gray;
+    /* border: 1px solid gray; */
     padding: 0 10px;
     font-size: 1.3rem;
+    border: none;
 }
 .searchbtn{
     position: absolute;
@@ -24,7 +46,7 @@
 
 
 
-@media (width<800px) {
+@media (width<940px) {
     .searchbar{
         width: 100%;
         height: 30px;
@@ -33,12 +55,11 @@
     }
     .search{
         width: 90vw;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      
     }
     .searchbtn{
         font-size: 1.1rem;
+        top: 9%;
     }
     
 }

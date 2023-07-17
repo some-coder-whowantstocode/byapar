@@ -129,7 +129,7 @@
 /* Responsive design --------------------------------------------------------------------------------------->*/
 
 
-@media (width<800px) {
+@media (width<940px) {
     .navbar{
         width: 100vw;
         background-color: black;
